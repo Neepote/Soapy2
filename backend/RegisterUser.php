@@ -13,42 +13,37 @@ $conn = new PDO("mysql:host=" . HOST . "; dbname=" . DB . "; port=" . PORT, USER
  *
  * @param [string] $email
  * @param [string] $password
+ * @param [string] $full_name
  * @return [string] risultato della query
  */
-function newUser($email, $password)
+function newUser($email, $password, $full_name)
 {
-    // non vengono fatti controlli ma la logica è la stessa di quella usa
-
     $password = password_hash($password, PASSWORD_DEFAULT);
+    $role = "user";
 
     global $conn;
-    $sql = "INSERT INTO `soapy2`.`users`
-                (
-                `full_name`,
-                `email`,
-                `password`,
-                `role`)
-            VALUES
-                ?,
-                ?,
-                ?,
-                ?
-                );";
+    $sql = "INSERT INTO users (email, password, full_name, role) VALUES (:email, :password, :full_name, :role)";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bindParam(":email", $email);
+    $stmt->bindParam(":password", $password);
+    $stmt->bindParam(":full_name", $full_name);
+    $stmt->bindParam(":role", $role);
     $red = null;
     try {
-        $red = $conn->prepare($sql)->execute([$email, $password]);
+        $red = $stmt->execute();
     } catch (PDOException  $th) {
         if ($th->getCode() == 23000) {
-            return json_encode(array("error" => "Email già presente nel database"));
+            return json_encode(array("type" => "error", "message" => "Email già presente nel database"));
         }
-        throw $th;
+        return json_encode(array("type" => "error", "message" => $th->getMessage()));
     }
 
     if ($red) {
-
-        return json_encode(array("success" => "Registrazione eseguita con successo!"));
+        $_SESSION["user"] = $full_name;
+        return json_encode(array("type" => "success", "message" => "Registrazione eseguita con successo!"));
     } else {
-        return json_encode(array("error" => "Errore nella registrazione."));
+        return json_encode(array("type" => "error", "message" => "Errore nella registrazione."));
     }
 }
 
@@ -56,5 +51,6 @@ function newUser($email, $password)
 // risponde alla chiamata http con il risultato dell'inserimento dell'utente
 echo (newUser(
     $dati['email'],
-    $dati['password']
+    $dati['password'],
+    $dati['full_name']
 ));

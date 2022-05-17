@@ -1,44 +1,33 @@
 <?php
-session_start();
+include '../components/navbar.php';
+include '../components/head.php';
+include '../components/bottom.php';
+$_SESSION['page'] = "home";
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <script>
-        function logoutUser(event) {
-            event.preventDefault();
-            var request = new XMLHttpRequest();
-
-            // rimane in ascolto di una eventuale risposta con esito positivo della richiesta inviata in precedenza
-            request.onreadystatechange = function() {
-                window.location.href = "Home.php";
-            };
-
-            // prepara la richiesta inserendo i dati da inviare
-            // per il login invieremo una richiesta post inserendo i dati nel body della richiesta
-
-            request.open("POST", "../../backend/LogoutUser.php", true);
-            request.setRequestHeader("Content-Type", "application/json");
-            request.send();
-        }
-    </script>
-</head>
+<?php showHead(); ?>
 
 <body>
     <?php
-    if (isset($_SESSION['user']) && $_SESSION['user'] != null) {
-        echo "<button onclick='logoutUser(event)'>logout</button>";
-    } else {
-        echo     '<a href="LoginRegistration.php">
-					<button>login</button>
-				</a>';
-    }
+    showNavbar();
     ?>
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" style="overflow: hidden; height: 500px">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class=".img-fluid w-100" src="https://image.shutterstock.com/z/stock-vector-soap-making-ingredients-banner-in-color-hand-sketched-aromatic-materials-for-cosmetics-perfumery-2055212831.jpg" alt="First slide">
+            </div>
+            <div class="carousel-item">
+                <img class=".img-fluid w-100" src="https://image.shutterstock.com/z/stock-vector-cosmetic-banner-template-merging-realistic-botanical-soaps-with-cute-hand-drawn-floral-background-1682166739.jpg" alt="Second slide">
+            </div>
+            <div class="carousel-item">
+                <img class=".img-fluid w-100" src="https://image.shutterstock.com/image-photo/beautiful-natural-soap-bars-ingredients-600w-2091027505.jpg" alt="Third slide">
+            </div>
+        </div>
+    </div>
+
+    <?php showBottom(); ?>
 </body>
 
 </html>

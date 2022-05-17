@@ -1,7 +1,6 @@
 //handles users login form
 function handleSubmit(event) {
 	event.preventDefault();
-
 	//takes form data and converts it into an object
 	let fromData = new FormData(event.target);
 	let parsed = Object.fromEntries(fromData);
@@ -10,15 +9,18 @@ function handleSubmit(event) {
 	delete parsed.type;
 
 	console.log(parsed);
-	if (form == "userRegistration") {
-		registerUser(parsed);
-	} else if (form == "userLogin") {
-		loginUser(parsed);
-	}
 
-	x = 1;
-	x++;
-	console.log(x);
+	switch (form) {
+		case "userLogin":
+			loginUser(parsed);
+			break;
+		case "userRegistration":
+			registerUser(parsed);
+			break;
+		case "search":
+			search(parsed);
+			break;
+	}
 }
 
 function registerUser(params) {
@@ -27,12 +29,10 @@ function registerUser(params) {
 	// rimane in ascolto di una eventuale risposta con esito positivo della richiesta inviata in precedenza
 	request.onreadystatechange = function () {
 		if (request.readyState == 4 && request.status == 200) {
-			//console.log(request.responseText);
 			let result = JSON.parse(request.responseText);
-
-			if (result.success) window.location.href = "Home.php";
-			//document.getElementById("response").innerHTML = result;
 			console.log(result);
+			if (result["type"] == "success") window.location.href = "Home.php";
+			else if (result["type"] === "error") console.error(result.message);
 		}
 	};
 
@@ -52,10 +52,9 @@ function loginUser(params) {
 		if (request.readyState == 4 && request.status == 200) {
 			//console.log(request.responseText);
 			let result = JSON.parse(request.responseText);
-
-			if (result.success) window.location.href = "Home.php";
-			//document.getElementById("response").innerHTML = result;
 			console.log(result);
+			if (result["type"] == "success") window.location.href = "Home.php";
+			else if (result["type"] === "error") console.error(result.message);
 		}
 	};
 
@@ -66,3 +65,22 @@ function loginUser(params) {
 	request.setRequestHeader("Content-Type", "application/json");
 	request.send(parametri);
 }
+
+function logoutUser() {
+	//event.preventDefault();
+	var request = new XMLHttpRequest();
+
+	// rimane in ascolto di una eventuale risposta con esito positivo della richiesta inviata in precedenza
+	request.onreadystatechange = function () {
+		window.location.href = "Home.php";
+	};
+
+	// prepara la richiesta inserendo i dati da inviare
+	// per il login invieremo una richiesta post inserendo i dati nel body della richiesta
+
+	request.open("POST", "../../backend/LogoutUser.php", true);
+	request.setRequestHeader("Content-Type", "application/json");
+	request.send();
+}
+
+function search(params) {}

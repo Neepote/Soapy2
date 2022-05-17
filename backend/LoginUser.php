@@ -19,6 +19,7 @@ $conn = new PDO("mysql:host=" . HOST . "; dbname=" . DB . "; port=" . PORT, USER
  */
 function newUser($email, $password)
 {
+    //echo $password;
     // non vengono fatti controlli ma la logica è la stessa di quella usa
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         return json_encode(array("error" => "Email non valida"));
@@ -29,7 +30,7 @@ function newUser($email, $password)
     }
 
     global $conn;
-    $sql = "SELECT * FROM user WHERE email= ?;";
+    $sql = "SELECT * FROM users WHERE email= ?;";
     $red = null;
     try {
         $red = $conn->prepare($sql);
@@ -38,17 +39,16 @@ function newUser($email, $password)
         if ($th->getCode() == 23000) {
             return json_encode(array("type" => "error", "message" => "Email già presente nel database"));
         }
-        throw $th;
+        return json_encode(array("type" => "error", "message" => $th->getMessage()));
     }
 
     if ($red) {
         $row = $red->fetch(PDO::FETCH_ASSOC);
         if (password_verify($password, $row['password'])) {
-            $_SESSION["user"] = $row['email'];
-
-            return json_encode(array("success" => "Login eseguito con successo!"));
+            $_SESSION["user"] = $row['full_name'];
+            return json_encode(array("type" => "success", "message" => "Login eseguito con successo!"));
         } else {
-            return json_encode(array("error" => "Password non valida."));
+            return json_encode(array("type" => "error", "message" => "Password errata"));
         }
     }
 }
