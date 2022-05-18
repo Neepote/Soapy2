@@ -53,7 +53,7 @@ function loginUser(params) {
 			if (result["type"] == "success") {
 				sessionStorage.setItem("user", JSON.stringify(result["data"]));
 				console.log(sessionStorage.getItem("user"));
-				//window.location.href = "Home.php";
+				window.location.href = "Home.php";
 			} else if (result["type"] === "error")
 				console.error(result.message);
 		}
@@ -70,3 +70,25 @@ function loginUser(params) {
 function logoutUser() {
 	sessionStorage.removeItem("user");
 }
+
+function navbarDomUser() {
+	let div = document.getElementById("userAccount");
+	div.innerHTML = "";
+	let user = JSON.parse(sessionStorage.getItem("user"));
+	if (user === null) {
+		div.innerHTML = `
+		<a href="../pages/UserRegistration.php">
+			<button type="button" class="btn btn-primary">Registrati</button>
+		</a>`;
+	} else {
+		div.innerHTML = `
+		<span class="navbar-text"> 
+            ${user["full_name"]}
+        </span>
+		<a href="">
+            <button onclick="logoutUser(event)" class="btn btn-outline-danger">logout</button>
+		</a>`;
+	}
+}
+
+navbarDomUser();

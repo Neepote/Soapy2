@@ -3,10 +3,10 @@ include '../components/navbar.php';
 include '../components/head.php';
 include '../components/bottom.php';
 $_SESSION['page'] = "home";
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <?php showHead(); ?>
 
 <body>
