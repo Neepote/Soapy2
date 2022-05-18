@@ -27,7 +27,11 @@ function showNavbar()
         </div>
         <div>';
     echo $_SESSION["user"] != null ?
-        '<span class="navbar-text"> ' . $_SESSION["user"] . '</span>
+    '<span class="navbar-text"> 
+            <script type="text/javascript">
+                JSON.parse(sessionStorage.user)["full_name"];
+            </script>
+        </span>
             <button onclick="logoutUser(event)" class="btn btn-outline-danger">logout</button>'
         :
         '<a href="../pages/UserRegistration.php">

@@ -1,11 +1,10 @@
 <?php
-session_start();
 
 // recupera i dati inviati tramite metodo POST
 $dati = json_decode(file_get_contents('php://input'), true);
 
 // apre una connessione con il database
-include "../config/connectionDB.php";
+include "../../config/connectionDB.php";
 $conn = new PDO("mysql:host=" . HOST . "; dbname=" . DB . "; port=" . PORT, USER, PASSWORD);
 
 /**
@@ -38,9 +37,7 @@ function newUser($email, $password, $full_name)
         }
         return json_encode(array("type" => "error", "message" => $th->getMessage()));
     }
-
     if ($red) {
-        $_SESSION["user"] = $full_name;
         return json_encode(array("type" => "success", "message" => "Registrazione eseguita con successo!"));
     } else {
         return json_encode(array("type" => "error", "message" => "Errore nella registrazione."));

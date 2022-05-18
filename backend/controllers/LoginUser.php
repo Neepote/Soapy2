@@ -7,7 +7,7 @@ $dati = json_decode(file_get_contents('php://input'), true);
 
 
 // apre una connessione con il database
-include "../config/connectionDB.php";
+include "../../config/connectionDB.php";
 $conn = new PDO("mysql:host=" . HOST . "; dbname=" . DB . "; port=" . PORT, USER, PASSWORD);
 
 /**
@@ -45,8 +45,13 @@ function newUser($email, $password)
     if ($red) {
         $row = $red->fetch(PDO::FETCH_ASSOC);
         if (password_verify($password, $row['password'])) {
-            $_SESSION["user"] = $row['full_name'];
-            return json_encode(array("type" => "success", "message" => "Login eseguito con successo!"));
+            $user = array(
+                "id" => $row['id'],
+                "full_name" => $row['full_name'],
+                "email" => $row['email'],
+                "role" => $row['role'],
+            );
+            return json_encode(array("type" => "success", "message" => "Login eseguito con successo!", "data" => $user));
         } else {
             return json_encode(array("type" => "error", "message" => "Password errata"));
         }

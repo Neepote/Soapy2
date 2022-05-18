@@ -1,11 +1,13 @@
 <?php
 include '../components/head.php';
 include '../components/bottom.php';
-if (isset($_SESSION['user']) && $_SESSION['user'] != null) {
-	header("Location: ../../index.php");
-}
 ?>
 <!DOCTYPE html>
+<script type="text/javascript">
+	if (JSON.parse(sessionStorage.user) != null) {
+		window.location.href = "../pages/Home.php";
+	}
+</script>
 <html lang="en">
 
 <?php showHead(); ?>
@@ -51,7 +53,7 @@ if (isset($_SESSION['user']) && $_SESSION['user'] != null) {
 							event.preventDefault();
 							event.stopPropagation();
 						} else {
-							handleSubmit(event);
+							handleSubmitLogin(event);
 						}
 						form.classList.add("was-validated");
 					},

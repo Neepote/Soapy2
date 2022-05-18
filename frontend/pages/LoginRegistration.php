@@ -1,18 +1,20 @@
 <?php
 include '../components/head.php';
 include '../components/bottom.php';
-if (isset($_SESSION['user']) && $_SESSION['user'] != null) {
-	header("Location: ../../index.php");
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
+<script type="text/javascript">
+	if (JSON.parse(sessionStorage.user) != null) {
+		window.location.href = "../pages/Home.php";
+	}
+</script>
 
 <?php showHead(); ?>
 
 <body>
 	<div class="container">
-		<form onsubmit="handleSubmit(event)">
+		<form onsubmit="handleSubmitLogin(event)">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Email address</label>
 				<input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp" placeholder="Enter email" required />
