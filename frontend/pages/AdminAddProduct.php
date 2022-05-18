@@ -2,9 +2,6 @@
 include '../components/navbar.php';
 include '../components/head.php';
 include '../components/bottom.php';
-$_SESSION['page'] = "adminAddProduct";
-
-if ($_SESSION['user'])
 
 ?>
 <!DOCTYPE html>
@@ -26,7 +23,7 @@ if ($_SESSION['user'])
 		</div>
 		<div class="row">
 			<div class="col-md-12">
-				<form action="handleSubmit(event)" method="post">
+				<form onsubmit="handleSubmitProducts(event)" method="post">
 					<div class="form-group">
 						<label for="name">Name</label>
 						<input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
