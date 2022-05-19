@@ -71,24 +71,4 @@ function logoutUser() {
 	sessionStorage.removeItem("user");
 }
 
-function navbarDomUser() {
-	let div = document.getElementById("userAccount");
-	div.innerHTML = "";
-	let user = JSON.parse(sessionStorage.getItem("user"));
-	if (user === null) {
-		div.innerHTML = `
-		<a href="../pages/UserRegistration.php">
-			<button type="button" class="btn btn-primary">Registrati</button>
-		</a>`;
-	} else {
-		div.innerHTML = `
-		<span class="navbar-text"> 
-            ${user["full_name"]}
-        </span>
-		<a href="">
-            <button onclick="logoutUser(event)" class="btn btn-outline-danger">logout</button>
-		</a>`;
-	}
-}
 
-navbarDomUser();
