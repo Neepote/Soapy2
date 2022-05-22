@@ -1,18 +1,15 @@
-<?php
-include '../components/navbar.php';
-include '../components/head.php';
-include '../components/bottom.php';
-$_SESSION['page'] = "home";
-
-?>
 <!DOCTYPE html>
+
 <html lang="en">
-<?php showHead(); ?>
+
+<head>
+    <script src="../components/head.js"></script>
+</head>
 
 <body>
-    <?php
-    showNavbar();
-    ?>
+    <script type="text/javascript" src="../components/navbar.js" ONLOAD="showNavbar()">
+    </script>
+
     <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" style="overflow: hidden; height: 500px">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -27,7 +24,7 @@ $_SESSION['page'] = "home";
         </div>
     </div>
 
-    <?php showBottom(); ?>
+    <script src="../components/bottom.js"></script>
 </body>
 
 </html>

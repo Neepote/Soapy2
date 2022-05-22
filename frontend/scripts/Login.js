@@ -53,7 +53,7 @@ function loginUser(params) {
 			if (result["type"] == "success") {
 				sessionStorage.setItem("user", JSON.stringify(result["data"]));
 				console.log(sessionStorage.getItem("user"));
-				window.location.href = "Home.php";
+				window.location.href = "Home.html";
 			} else if (result["type"] === "error")
 				console.error(result.message);
 		}

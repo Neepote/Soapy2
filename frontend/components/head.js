@@ -1,9 +1,6 @@
-<?php
-
-function  showHead()
-{
-    echo <<<HTML
-    <head>
+function showHead() {
+	document.open();
+	document.write(`
         <title>Title</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
@@ -11,6 +8,10 @@ function  showHead()
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
-    </head>
-    HTML;
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    `);
+	document.close();
 }
+
+showHead();

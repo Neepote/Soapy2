@@ -5,7 +5,7 @@
 	"symfony-vscode.phpExecutablePath": "D:/workspace/php/php-8.1.5-Win32-vs16-x64/php.exe",
 	"symfony-vscode.consolePath": "D:/workspace/php/php-8.1.5-Win32-vs16-x64/symfony.exe",
 	"files.associations": {
-		"*.html": "twig"
+		"*.html": "html"
 	},
 	"emmet.includeLanguages": {
 		"twig": "html"

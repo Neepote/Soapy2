@@ -1,2 +1,2 @@
-<?php 
-	header("Location: ./frontend/pages/home.php");
+<?php
+header("Location: ./frontend/pages/Home.html");

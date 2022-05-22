@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<script src="../components/head.js"></script>
+</head>
+
+<body>
+	
+	<script type="text/javascript" src="../components/navbar.js" ONLOAD="showNavbar()">
+	</script>
+
+	<div class="container" id="alert"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1>Add a new product</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<form onsubmit="handleSubmitProducts(event)" method="post" class="form">
+									
+						<div id="productForm"></div>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</form>
+				<script>
+		// Example starter JavaScript for disabling form submissions if there are invalid fields
+					(function() {
+						"use strict";
+						// Fetch all the forms we want to apply custom Bootstrap validation styles to
+						var forms = document.querySelectorAll(".needs-validation");
+						// Loop over them and prevent submission
+						Array.prototype.slice.call(forms).forEach(function(form) {
+							form.addEventListener(
+								"submit",
+								function(event) {
+									if (!form.checkValidity()) {
+										event.preventDefault();
+										event.stopPropagation();
+									} else {
+										handleSubmitLogin(event);
+									}
+									form.classList.add("was-validated");
+								},
+								false
+							);
+						});
+					})();
+				</script>
+			</div>
+		</div>
+
+		<div class="Container" id="tabella">
+				
+		</div>
+
+		<script src="../components/bottom.js"></script>
+		<script>
+			let data = search(null)
+			printAdminAddProduct(data);
+		</script>	
+		
+</body>
+
+</html>

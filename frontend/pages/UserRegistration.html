@@ -1,16 +1,14 @@
-<?php
-include '../components/head.php';
-include '../components/bottom.php';
-?>
 <!DOCTYPE html>
+<html lang="en">
 <script type="text/javascript">
 	if (JSON.parse(sessionStorage.user) != null) {
-		window.location.href = "../pages/Home.php";
+		window.location.href = "../pages/Home.html";
 	}
 </script>
-<html lang="en">
 
-<?php showHead(); ?>
+<head>
+	<script src="../components/head.js"></script>
+</head>
 
 <body>
 	<div class="container">
@@ -33,7 +31,7 @@ include '../components/bottom.php';
 		</form>
 	</div>
 	<div class="container">
-		<a href="LoginRegistration.php">
+		<a href="LoginRegistration.html">
 			<button type="button" class="btn btn-primary">Login</button>
 		</a>
 	</div>
@@ -62,7 +60,8 @@ include '../components/bottom.php';
 			});
 		})();
 	</script>
-	<?php showBottom(); ?>
+
+	<script src="../components/bottom.js"></script>
 </body>
 
 </html>
