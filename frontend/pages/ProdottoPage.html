@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script src="../components/head.js"></script>
+	</head>
+
+	<body>
+		<script
+			type="text/javascript"
+			src="../components/navbar.js"
+			ONLOAD="showNavbar()"
+		></script>
+
+		<div class="container-fluid" id="productSingle"></div>
+
+		<script src="../components/bottom.js"></script>
+		<script>
+			var url = new URL(window.location.href);
+			var name = url.searchParams.get("name");
+			search({ name: name })
+				.then(function (data) {
+					printProductPage(data[0]);
+				})
+				.catch(function (error) {
+					//printAlert(error, "alert-danger");
+					console.error(error);
+				});
+		</script>
+	</body>
+</html>

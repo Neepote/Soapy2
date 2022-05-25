@@ -12,6 +12,9 @@ function showNavbar() {
 					${navbarItem("Prodotti", "Prodotti.html")}
 				</ul>
             </div>
+			<div id="basket">
+				${basket()}
+			</div>
             <div id="userAccount">
 				${navbarDomUser()}
 			</div>
@@ -45,6 +48,21 @@ function navbarDomUser() {
 		<a href="">
             <button onclick="logoutUser(event)" class="btn btn-outline-danger">logout</button>
 		</a>`;
+	}
+}
+
+function basket() {
+	let basket = JSON.parse(localStorage.getItem("basket"));
+	console.log(basket);
+	let user = JSON.parse(sessionStorage.getItem("user"));
+	if (user !== null) {
+		return `
+		<a href="#" class="btn btn-link btn-lg">
+			<i class="fa fa-cart-plus" style="color:gray"> ${basket.length}</i>	
+        </a>
+	`;
+	} else {
+		return ``;
 	}
 }
 

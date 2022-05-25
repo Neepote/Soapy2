@@ -11,7 +11,7 @@ function printAlert(message, type) {
 	document.getElementById("alert").append(divContainer);
 }
 
-function printAdminAddProduct(data){
+function printAdminAddProduct(data) {
 	document
 		.getElementById("tabella")
 		.replaceChildren(adminCreateProductTable(data));

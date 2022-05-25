@@ -53,7 +53,7 @@ function adminCreateProductTable(list) {
 
 		let updateButton = document.createElement("button");
 		updateButton.innerHTML =
-			'<span class="glyphicon glyphicon-cog"></span> Update';
+			'<i class="fa fa-cog" style="color:gray"> Update</i>';
 		updateButton.classList = "btn btn-warning";
 		updateButton.setAttribute(
 			"onclick",
@@ -78,7 +78,7 @@ function adminCreateProductTable(list) {
 
 		let deleteButton = document.createElement("button");
 		deleteButton.innerHTML =
-			'<span class="glyphicon glyphicon-trash"></span> Delete';
+			'<i class="fa fa-trash-o" style="color:white"> Delete</i>';
 		deleteButton.classList = "btn btn-danger";
 		deleteButton.setAttribute("onclick", `deleteProduct(${list[i]["id"]})`);
 		var deleteCell = trow.insertCell(-1);
