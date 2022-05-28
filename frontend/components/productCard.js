@@ -1,15 +1,11 @@
 function printProductCard(item) {
 	return `
-		<div class="card" style="width: 18rem;">
+		<div class="card" style="width: 18rem;" onclick="redirectToProduct('${item.name}')>
 			<img class="card-img-top" src="${item.image}" alt="${item.name}">
 			<div class="card-body">
 				<h5 class="card-title">${item.name}</h5>
 				<p class="card-text">${item.description}</p>
 				<p class="card-text">${item.price}€</p>
-				<a href="#" >
-				<button class="btn btn-primary" onclick="redirectToProduct('${item.name}')">Go somewhere
-				</button>
-				</a>
 			</div>
 		</div>
 	`;
@@ -62,9 +58,12 @@ function printProductPage(item) {
 					<input type="hidden" name="image" value="${item.image}" />
 					<input type="hidden" name="price" value="${item.price}" />
 					<input type="hidden" name="type" value="addToBasket" />
-					<button type="submit" class="btn btn-success" ${
-						item.status === "out_of_stock" ? "disabled" : ""
-					}>Aggiungi al carrello</button>
+					${sessionStorage["user"] != null ?
+					'<button type="submit" class="btn btn-success"'
+					.concat(item.status === "out_of_stock" ? "disabled" : "")
+					.concat('>Aggiungi al carrello</button>') :
+					'<a href="./UserRegistartion.html" class="btn btn-primary">Per poter acquistare devi essere registrato!</a>'
+					}
 				</div>
 			</form>
 		</div>
