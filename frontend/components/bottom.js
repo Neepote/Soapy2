@@ -5,6 +5,7 @@ function showBottom() {
         <script src="../scripts/Login.js"></script>
         <script src="../scripts/Products.js"></script>
         <script src="../scripts/Basket.js"></script>
+        <script src="../scripts/Purchase.js"></script>
         <script src="../scripts/misc.js"></script>
         <script type="text/javascript" src="../components/table.js"></script>
         <script type="text/javascript" src="../components/form.js"></script>

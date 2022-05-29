@@ -91,3 +91,40 @@ function adminCreateProductTable(list) {
 	el.appendChild(table); */
 	return table;
 }
+
+function createBasketTable(basket) {
+	let table = document.createElement("table");
+	table.classList.add("table");
+	table.classList.add("table-striped");
+	let thead = document.createElement("thead");
+	let trh = document.createElement("tr");
+	trh.innerHTML = `
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Prezzo</th>
+        <th scope="col">Quantità</th>
+        <th scope="col">Totale</th>
+        <th scope="col">Rimuovi</th>
+    `;
+	thead.appendChild(trh);
+	table.appendChild(thead);
+	let tbody = document.createElement("tbody");
+	basket.map((item, index) => {
+		let tr = document.createElement("tr");
+		tr.innerHTML = `
+            <th scope="row">${index + 1}</th>
+            <td>${item.name}</td>
+            <td>${item.price}</td>
+            <td>${item.quantity}</td>
+            <td>${item.price * item.quantity}</td>
+            <td><button class="btn btn-danger"onclick="handleRemoveProduct('${
+				item.name
+			}')">
+            <i class="fa fa-trash-o" style="color:white"> Delete</i>
+            </button></td>
+        `;
+		tbody.appendChild(tr);
+	});
+	table.appendChild(tbody);
+	return table;
+}

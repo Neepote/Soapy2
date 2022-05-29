@@ -11,20 +11,22 @@
 			ONLOAD="showNavbar()"
 		></script>
 
-		<div class="container-fluid" id="productSingle"></div>
+		<div class="container-fluid" id="basketList"></div>
+		<div class="container text-center">
+			<div>
+				<button
+					type="button"
+					class="btn btn-primary"
+					onclick="handleAcquisto(event)"
+				>
+					Procedi all'acquisto
+				</button>
+			</div>
+		</div>
 
 		<script src="../components/bottom.js"></script>
-		<!-- <script>
-			var url = new URL(window.location.href);
-			var name = url.searchParams.get("name");
-			search({ name: name })
-				.then(function (data) {
-					printProductPage(data[0]);
-				})
-				.catch(function (error) {
-					//printAlert(error, "alert-danger");
-					console.error(error);
-				}); -->
+		<script>
+			showBasket();
 		</script>
 	</body>
 </html>

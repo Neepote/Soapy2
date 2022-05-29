@@ -54,10 +54,13 @@ function navbarDomUser() {
 function basket() {
 	let basket = JSON.parse(localStorage.getItem("basket"));
 	console.log(basket);
+	if (basket == null) {
+		basket = [];
+	}
 	let user = JSON.parse(sessionStorage.getItem("user"));
 	if (user !== null) {
 		return `
-		<a href="#" class="btn btn-link btn-lg">
+		<a href="CheckOutPage.html" class="btn btn-link btn-lg">
 			<i class="fa fa-cart-plus" style="color:gray"> ${basket.length}</i>	
         </a>
 	`;
