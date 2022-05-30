@@ -1,3 +1,6 @@
+/**
+ * genera i segmenti della barra di navigazione
+ */
 function showNavbar() {
 	document.open();
 	document.write(
@@ -23,6 +26,12 @@ function showNavbar() {
 	document.close();
 }
 
+/**
+ * Crea un segmento link per la barra di navigazione
+ * @param {*} name 
+ * @param {*} path 
+ * @returns 
+ */
 function navbarItem(name, path) {
 	return `
 	<li class=" nav-item, ${
@@ -33,6 +42,10 @@ function navbarItem(name, path) {
 	`;
 }
 
+/**
+ * Aggiunge il segmento dell'utente alla barra di navigazione
+ * @returns 
+ */
 function navbarDomUser() {
 	let user = JSON.parse(sessionStorage.getItem("user"));
 	if (user === null) {
@@ -51,6 +64,10 @@ function navbarDomUser() {
 	}
 }
 
+/**
+ * aggiunge il segmento del carrello alla barra di navigazione
+ * @returns 
+ */
 function basket() {
 	let basket = JSON.parse(localStorage.getItem("basket"));
 	console.log(basket);
@@ -69,4 +86,3 @@ function basket() {
 	}
 }
 
-//showNavbar();

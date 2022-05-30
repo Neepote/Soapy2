@@ -1,5 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+	<script type="text/javascript">
+		if (JSON.parse(localStorage.getItem("basket")).length == 0) {
+			window.location.href = "../pages/Home.html";
+		}
+	</script>
 	<head>
 		<script src="../components/head.js"></script>
 	</head>

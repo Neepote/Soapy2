@@ -1,3 +1,7 @@
+/**
+ * Gestisce gli eventi per i prodotti
+ * @param {*} event
+ */
 function handleSubmitProducts(event) {
 	event.preventDefault();
 	//takes form data and converts it into an object
@@ -26,6 +30,11 @@ function handleSubmitProducts(event) {
 	}
 }
 
+/**
+ * invia una richiesta rest per la ricerca dei prodotti
+ * @param {*} params nome del prodotto da cercare
+ * @returns
+ */
 function search(params) {
 	params = params || { name: "" };
 	return new Promise(function (resolve, reject) {
@@ -51,6 +60,10 @@ function search(params) {
 	});
 }
 
+/**
+ * invia una richiesta rest per l'inserimento di un prodotto
+ * @param {*} params dati del prodotto da inserire
+ */
 function insertProduct(params) {
 	var request = new XMLHttpRequest();
 
