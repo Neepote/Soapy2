@@ -1,3 +1,7 @@
+/**
+ * Gestisce l'aggiunta di un prodotto al carrello
+ * @param {*} event 
+ */
 function handleSubmitBasket(event) {
 	event.preventDefault();
 	//takes form data and converts it into an object
@@ -16,6 +20,10 @@ function handleSubmitBasket(event) {
 	}
 }
 
+/**
+ * invia una richiesta rest per l'inserimento di un prodotto al carrello
+ * @param {*} item 
+ */
 function addItemToBasket(item) {
 	let basket = JSON.parse(localStorage.getItem("basket"));
 	if (basket == null) {
@@ -32,6 +40,9 @@ function addItemToBasket(item) {
 	window.location.href = "./Prodotti.html";
 }
 
+/**
+ * mostra il contenuto del carrello per la pagina di checkout
+ */
 function showBasket() {
 	let basket = JSON.parse(localStorage.getItem("basket"));
 	if (basket == null) {
@@ -53,6 +64,10 @@ function showBasket() {
 	main.appendChild(h4);
 }
 
+/**
+ * elimina un prodotto nel carrello o ne riduce la quantità 
+ * @param {*} name 
+ */
 function handleRemoveProduct(name) {
 	let basket = JSON.parse(localStorage.getItem("basket"));
 	let index = basket.findIndex((x) => x.name == name);
@@ -62,5 +77,8 @@ function handleRemoveProduct(name) {
 		basket.splice(index, 1);
 	}
 	localStorage.setItem("basket", JSON.stringify(basket));
+	if (JSON.parse(localStorage.getItem("basket")).length == 0) {
+		window.location.href = "../pages/Home.html";
+	}
 	showBasket();
 }

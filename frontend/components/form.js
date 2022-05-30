@@ -1,5 +1,5 @@
 /**
- *
+ * crea il form per l'aggiunta di un prodotto dalla pagina dell'admin
  * @param {*} id
  * @param {*} name
  * @param {*} description

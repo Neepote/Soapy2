@@ -1,4 +1,8 @@
 //handles users login form
+/**
+ * Gestisce gli eventi per la registrazione e il login
+ * @param {*} event
+ */
 function handleSubmitLogin(event) {
 	event.preventDefault();
 	//takes form data and converts it into an object
@@ -20,6 +24,10 @@ function handleSubmitLogin(event) {
 	}
 }
 
+/**
+ * invia una richiesta rest per la registrazione dell'utente
+ * @param {*} params dati dell'utente da registrare
+ */
 function registerUser(params) {
 	var request = new XMLHttpRequest();
 
@@ -41,6 +49,10 @@ function registerUser(params) {
 	request.send(parametri);
 }
 
+/**
+ * invia una richiesta rest per il login dell'utente
+ * @param {*} params credenziali inserite dall'utente per l'accesso
+ */
 function loginUser(params) {
 	var request = new XMLHttpRequest();
 
@@ -67,8 +79,9 @@ function loginUser(params) {
 	request.send(parametri);
 }
 
+/**
+ * logout dell'utente
+ */
 function logoutUser() {
 	sessionStorage.removeItem("user");
 }
-
-

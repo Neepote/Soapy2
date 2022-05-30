@@ -1,3 +1,8 @@
+/**
+ * crea un elemento per mostrare degli "alert" response message
+ * @param {*} message
+ * @param {*} type
+ */
 function printAlert(message, type) {
 	let divContainer = document.createElement("div");
 	divContainer.innerHTML = `
@@ -11,6 +16,10 @@ function printAlert(message, type) {
 	document.getElementById("alert").append(divContainer);
 }
 
+/**
+ * gestisce la stampa per la pagina admin per il CRUD (create, read, update, delete) dei prodotti
+ * @param {*} data
+ */
 function printAdminAddProduct(data) {
 	document
 		.getElementById("tabella")

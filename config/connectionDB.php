@@ -6,5 +6,5 @@
 define("USER", "root");
 define("PASSWORD", "password");
 define("HOST", "localhost");
-define("DB", "my_soapy");
+define("DB", "soapy2");
 define("PORT", 3306);

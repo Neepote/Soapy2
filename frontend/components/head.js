@@ -1,7 +1,10 @@
+/**
+ * crea la <head> per le pagine html per standardizzare il codice
+ */
 function showHead() {
 	document.open();
 	document.write(`
-        <title>Title</title>
+        <title>Soapy2</title>
         <!-- Required meta tags -->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />

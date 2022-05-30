@@ -1,3 +1,8 @@
+/**
+ * crea una tabella per mostrare i prodotti data una lista in input
+ * @param {*} list 
+ * @returns 
+ */
 function adminCreateProductTable(list) {
 	var cols = [];
 
@@ -92,6 +97,11 @@ function adminCreateProductTable(list) {
 	return table;
 }
 
+/**
+ * crea una tabella per mostrare i prodotti nel carrello
+ * @param {*} basket 
+ * @returns 
+ */
 function createBasketTable(basket) {
 	let table = document.createElement("table");
 	table.classList.add("table");

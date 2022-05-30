@@ -1,3 +1,6 @@
+/**
+ * carica tutti gli script utilizzati per la creazione e gestione delle pagine e dati del sito
+ */
 function showBottom() {
 	document.open();
 	document.write(`

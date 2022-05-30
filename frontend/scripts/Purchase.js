@@ -1,3 +1,7 @@
+/**
+ * Gestisce gli eventi per gli acquisti
+ * @param {*} event
+ */
 function handleAcquisto(event) {
 	//event.preventDefault();
 	let user = JSON.parse(sessionStorage.getItem("user"));
@@ -13,6 +17,10 @@ function handleAcquisto(event) {
 	insertProduct(params);
 }
 
+/**
+ * Invia una chiamata rest per inserire gli acquisti
+ * @param {*} params
+ */
 function insertProduct(params) {
 	var request = new XMLHttpRequest();
 
@@ -22,7 +30,7 @@ function insertProduct(params) {
 			let result = JSON.parse(request.responseText);
 			if (result["type"] == "success") {
 				console.log(result);
-				localStorage.setItem("basket")="";
+				localStorage.setItem("basket", JSON.stringify([]));
 				alert("Acquisto effettuato con successo!");
 				window.location.href = "Home.html";
 			} else if (result["type"] === "error") {

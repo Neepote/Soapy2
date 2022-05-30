@@ -1,7 +1,12 @@
+/**
+ * crea una "card" per mostrare un prodotto
+ * @param {*} item
+ * @returns
+ */
 function printProductCard(item) {
 	return `
-		<div class="card" style="width: 18rem;" onclick="redirectToProduct('${item.name}')">
-			<img class="card-img-top" src="${item.image}" alt="${item.name}">
+		<div class="card my-2" style="width: 18rem; cursor:pointer; height:350px" onclick="redirectToProduct('${item.name}')">
+			<img class="card-img-top h-50" src="${item.image}" alt="${item.name}">
 			<div class="card-body">
 				<h5 class="card-title">${item.name}</h5>
 				<p class="card-text">${item.description}</p>
@@ -11,13 +16,18 @@ function printProductCard(item) {
 	`;
 }
 
+/**
+ * crea una list di "card" per mostrare una lista di prodotti
+ * @param {*} data
+ */
 function printProducts(data) {
 	let cont = document.getElementById("products");
 	let row = document.createElement("div");
-	row.classList = "row justify-content-md-center align-items-center";
+	row.classList =
+		"row justify-content-md-center justify-content-center align-items-center";
 	data.map(function (item) {
 		row.innerHTML += `
-		<div class="col-md-auto align-self-start">
+		<div class="col-md-auto align-self-center" style="width:auto;">
 			${printProductCard(item)}
 		</div>
 	`;
@@ -25,6 +35,10 @@ function printProducts(data) {
 	cont.replaceChildren(row);
 }
 
+/**
+ * compone la pagina dei prodotti
+ * @param {*} item
+ */
 function printProductPage(item) {
 	let cont = document.getElementById("productSingle");
 	let row = document.createElement("div");
@@ -76,16 +90,11 @@ function printProductPage(item) {
 	cont.replaceChildren(row);
 }
 
+/**
+ * reindirizza alla pagina del prodotto
+ * @param {*} name
+ */
 function redirectToProduct(name) {
 	console.log("fsdf");
-	window.location.href = `./ProdottoPage.html?name=${name}`; /* 
-	search({ name: name })
-		.then(function (data) {
-			sessionStorage.setItem("product", JSON.stringify(data[0]));
-			
-		})
-		.catch(function (error) {
-			//printAlert(error, "alert-danger");
-			console.error(error);
-		}); */
+	window.location.href = `./ProdottoPage.html?name=${name}`;
 }
